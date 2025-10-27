@@ -31,3 +31,7 @@ The **Data** folder contains all datasets used in the analyses.
 | **27624_word_7_cleaned_filtered_nam.xlsx** | Filtered version of the word dataset, retaining trials with **ACC > 85% (Naming task)**, used for *multi-character regression analyses* (from Zhang et al., 2023). |
 | **Variable Descriptions.xlsx** | Description of variables, including detailed explanations for each column in the datasets. |
 
+---
+
+### 🚀 To be continued...
+This repository is still being updated — more analyses and results will be added soon. 🌱
