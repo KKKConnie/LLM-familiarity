@@ -20,6 +20,7 @@ For researchers seeking direct access to the familiarity norms, all dataset file
     * `norms_qwen_max.xlsx` 
 
 **Associated Resources**
+* **Target Stimuli**: The complete list of 27,624 word stimuli is available in `Data/0 wordlists/target_words.txt`.
 * **Corresponding Prompt Templates**: The exact templates used to generate the data above are available in `Data/1 prompts/prompt_template.txt`.
 * **Variable Dictionary**: For detailed definitions of all metrics and columns, please refer to `Data/Variable Descriptions.xlsx`.
 
