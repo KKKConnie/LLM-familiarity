@@ -5,6 +5,7 @@ This project establishes **LLM-derived familiarity norms** for **27,624 Simplifi
 This repository provides:
 1.  **Immediate access** to the large-scale familiarity dataset.
 2.  **Comprehensive source code** to facilitate research reproducibility and extension.
+3.  **Practical suggestions** to assist researchers in adapting this framework to other languages and variables
 
 ## 📥Accessing the Data
 
