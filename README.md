@@ -6,7 +6,7 @@ This repository provides:
 1.  **Immediate access** to the large-scale familiarity dataset.
 2.  **Comprehensive source code** to facilitate research reproducibility and extension.
 
-## Accessing the Data
+## 📥Accessing the Data
 
 For researchers seeking direct access to the familiarity norms, all dataset files are organized in the `Data/2 norms` directory.
 
@@ -22,7 +22,7 @@ For researchers seeking direct access to the familiarity norms, all dataset file
 * **Corresponding Prompt Templates**: The exact templates used to generate the data above are available in `Data/1 prompts/prompt_template.txt`.
 * **Variable Dictionary**: For detailed definitions of all metrics and columns, please refer to `Data/Variable Descriptions.xlsx`.
 
-## Reproducing the Pipeline
+## ⚙️Reproducing the Pipeline
 
 For researchers aiming to replicate the generation and analysis process, the complete pipeline is open-sourced in the `Code` directory.
 
@@ -41,15 +41,15 @@ For researchers aiming to replicate the generation and analysis process, the com
 
 > **Note on API Updates**: Given the rapid iteration of LLM services, we strongly recommend consulting the official API documentation for the latest interface specifications and parameter support prior to reproduction.
 
-## Extending the Framework
+## 🚀Extending the Framework
 
 This methodology is not limited to Simplified Chinese familiarity norms. We encourage researchers to extend this framework to other languages, models, and psycholinguistic variables.
 
 ### General Suggestions
-* **Cross-Language & Model Extension**: Researchers are advised to first check if the target model's training corpus sufficiently covers the target language. **We suggest conducting pilot tests (see Section 3.3)** to calibrate prompts and parameters before full-scale generation.
+* **Cross-Language & Model Extension**: Researchers are advised to first check if the target model's training corpus sufficiently covers the target language. We suggest conducting pilot tests to calibrate prompts and parameters before full-scale generation.
 * **Cross-Variable Extension**: It is important to assess whether the target psycholinguistic variable is suitable for LLM-based estimation. Suitable variables typically possess:
-    1.  Clear, operational definitions in natural language.
-    2.  Established human norms in existing literature to facilitate alignment and validation (e.g., Age of Acquisition, Concreteness, Imageability).
+    * Clear, operational definitions in natural language.
+    * Established human norms in existing literature to facilitate alignment and validation (e.g., Age of Acquisition, Concreteness, Imageability).
 
 ### Prompt Design
 Based on our observations, the following components may contribute to more effective prompt engineering:
@@ -57,7 +57,7 @@ Based on our observations, the following components may contribute to more effec
 * **Role Specification**: It is helpful to explicitly define the model's persona at the beginning (e.g., *"You are a native speaker of Simplified Chinese"*).
 * **Construct Definition**: We recommend providing a rigorous, academic definition of the construct and specifying the rating scale in detail (e.g., *"1 to 7, where 1 represents the minimum..."*).
 * **Language Alignment**:
-    * *Prompt Language*: Consider the interaction between the prompt language and the model's training data. Our pilot tests suggest that performance may vary by prompt language; for instance, **GPT-4o demonstrated superior performance on Chinese tasks when prompted in English**.
+    * *Prompt Language*: Consider the interaction between the prompt language and the model's training data. Our pilot tests suggest that performance may vary by prompt language; for instance, GPT-4o demonstrated superior performance on Chinese tasks when prompted in English.
     * *Target Emphasis*: It is beneficial to reinforce the target language context. For example, instructing the model to evaluate a *"Chinese word"* rather than a generic *"word"*.
 * **Format Constraints**: Requesting strict output formats (e.g., *"Output numbers only"*) can help minimize hallucinations and facilitate downstream data cleaning.
 * **Visual Emphasis**: Using **CAPITALIZATION** may help highlight critical instructions (e.g., *"A Chinese character is very FAMILIAR if you see/hear it often..."*).
@@ -66,18 +66,18 @@ Based on our observations, the following components may contribute to more effec
 ### Pilot Protocol
 Before executing large-scale generation, we suggest a pilot testing protocol similar to the following:
 
-1.  **Stimuli Selection**: Select a representative subset of the target vocabulary. For instance, this study sampled approximately **10% of high-frequency Chinese vocabulary**, covering lengths from **single-character to four-character words**.
-2.  **Generation Strategy**:
+* **Stimuli Selection**: Select a representative subset of the target vocabulary. For instance, this study sampled approximately 10% of high-frequency Chinese vocabulary, covering lengths from single-character to four-character words.
+* **Generation Strategy**:
     * *Log-probability Method*: If supported (e.g., GPT-4o), consider setting `Temperature=0` and extracting log-probabilities for a single-call estimate.
     * *Averaging Method*: If unsupported, consider performing multiple iterations (e.g., 3 runs) and calculating the mean to capture data distribution.
-3.  **Data Cleaning**: Careful inspection is advisable even with format constraints. We recommend filtering out non-numeric outputs or potential "hallucinations."
-4.  **Data Validation**: The quality of pilot data can be evaluated by:
+* **Data Cleaning**: Careful inspection is advisable even with format constraints. We recommend filtering out non-numeric outputs or potential "hallucinations."
+* **Data Validation**: The quality of pilot data can be evaluated by:
     * Checking alignment (e.g., correlation) with human ratings (if available).
     * Assessing its explanatory power regarding lexical processing.
 
-### Citation
+## Citation
 
-### Contact
+## Contact
 
 Please address questions and suggestions to:
 
