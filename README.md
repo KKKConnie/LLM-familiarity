@@ -3,7 +3,6 @@
 This repository provides a large-scale familiarity database for 27,624 Simplified Chinese lexical items, estimated with large language models (LLMs), including GPT-4o and Qwen-max. Beyond releasing the familiarity estimates themselves, the repository is designed to support their transparent use, reproducibility, and future extension. It documents the model settings and workflow used in the current study, provides guidance for adapting the framework to new variables, languages, and models, and includes step-by-step tutorials for practical research tasks.
 
 ## Contents
-- [Overview](#overview)
 - [How this resource can support research](#how-this-resource-can-support-research)
 - [Data and repository contents](#data-and-repository-contents)
   - [Familiarity datasets](#familiarity-datasets)
