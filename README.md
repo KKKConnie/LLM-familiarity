@@ -109,7 +109,39 @@ Before full-scale data generation, we recommend establishing a stable prompt-and
 - **Validation**: Evaluate the calibrated outputs against available human norms to assess alignment and overall validity. When relevant, also examine whether the resulting ratings show useful explanatory power for downstream behavioral measures, such as lexical processing performance.
 
 ## Step-by-step tutorials
+> Note: The tutorial notebooks in this repository are intended for local execution after the repository has been downloaded. 
+
 ### Tutorial 1. Fine-grained data retrieval for stimulus selection
+
+This tutorial demonstrates how to retrieve a targeted subset of lexical items from the familiarity datasets for stimulus design. The example below uses the GPT-4o word-level dataset to extract the top 10% most familiar two-character items.
+
+#### Working path
+- Tutorial notebook: `Tutorials/01_stimulus_selection.ipynb` (for local execution)
+- Input dataset: `Data/2 norms/norms_gpt4o_word_prompt.xlsx`
+- Output directory: `Tutorials/output/`
+
+#### Input data structure
+The input table should contain at least the following columns:
+- `WORD`: the lexical item
+- `Length`: the number of characters in the item
+- `GPT_FAM_probs`: the GPT-4o familiarity estimate
+
+Detailed definitions of all variables are provided in `Data/Variable Descriptions.xlsx`.
+
+#### Procedure
+1. Load the released familiarity dataset.
+2. Restrict the data to two-character items (`Length == 2`).
+3. Sort items by `GPT_FAM_probs` in descending order.
+4. Select the top 10% highest-scoring items.
+5. Export the resulting subset for later use in stimulus design.
+
+#### Output
+The tutorial exports a filtered item list, for example:
+`Tutorials/output/gpt4o_top10pct_two_character_words.xlsx`
+
+#### Notes
+- The same workflow can be applied to other datasets by changing the input file and the familiarity column of interest.
+- For the Qwen-max dataset, replace `GPT_FAM_probs` with `qwen_FAM_mean_30`.
 ### Tutorial 2. Using LLM-derived familiarity to model lexical decision latencies
 
 ## Citation
@@ -117,4 +149,4 @@ Before full-scale data generation, we recommend establishing a stable prompt-and
 ## Contact
 Please address questions and suggestions to:
 * DING Ziyi | 丁子益 | ziyi.ecnu@gmail.com | ZiyiDing7@github
-* QIN kangninig | 秦康宁 | conniekk729@gmail.com | KKKConnie@github
+* QIN Kangning | 秦康宁 | conniekk729@gmail.com | KKKConnie@github
