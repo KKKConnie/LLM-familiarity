@@ -3,6 +3,7 @@
 This repository provides a large-scale familiarity database for 27,624 Simplified Chinese lexical items, estimated with large language models (LLMs), including GPT-4o and Qwen-max. Beyond releasing the familiarity estimates themselves, the repository is designed to support their transparent use, reproducibility, and future extension. It documents the model settings and workflow used in the current study, provides guidance for adapting the framework to new variables, languages, and models, and includes step-by-step tutorials for practical research tasks.
 
 ## Contents
+- [Overview](#overview)
 - [How this resource can support research](#how-this-resource-can-support-research)
 - [Data and repository contents](#data-and-repository-contents)
   - [Familiarity datasets](#familiarity-datasets)
@@ -10,13 +11,19 @@ This repository provides a large-scale familiarity database for 27,624 Simplifie
 - [Reproducibility, model currency, and versioning](#reproducibility-model-currency-and-versioning)
   - [Model settings](#model-settings)
   - [Code pipeline](#code-pipeline)
+  - [Refreshing and evaluating updated outputs](#refreshing-and-evaluating-updated-outputs)
+  - [External datasets used in validation](#external-datasets-used-in-validation)
 - [Extending the approach to new variables, languages, and models](#extending-the-approach-to-new-variables-languages-and-models)
   - [Suitability criteria](#suitability-criteria)
   - [Prompt engineering recommendations](#prompt-engineering-recommendations)
   - [Iterative calibration protocol](#iterative-calibration-protocol)
-- [Step-by-step tutorials](#step-by-step-tutorials)
+- [Tutorials](#tutorials)
   - [Tutorial 1. Fine-grained data retrieval for stimulus selection](#tutorial-1-fine-grained-data-retrieval-for-stimulus-selection)
   - [Tutorial 2. Using LLM-derived familiarity to model lexical decision latencies](#tutorial-2-using-llm-derived-familiarity-to-model-lexical-decision-latencies)
+- [Citation](#citation)
+  - [How to cite this resource](#how-to-cite-this-resource)
+  - [External datasets referenced in validation](#external-datasets-referenced-in-validation)
+- [Contact](#contact)
 
 ## How this resource can support research
 
@@ -31,7 +38,7 @@ More broadly, the framework may also support cross-linguistic work by providing 
 ## Data and repository contents
 
 ### Familiarity datasets
-All released familiarity datasets are organized in the `Data/2 norms` directory. These files contain the main familiarity estimates reported in the current study.
+All released familiarity datasets are organized in the `LLM_Familiarity/Data/2 norms` directory. These files contain the main familiarity estimates reported in the current study.
 
 - **GPT-4o-derived datasets**
   - `norms_gpt4o_character_prompt.xlsx` (generated with the character prompt)
@@ -44,9 +51,9 @@ All released familiarity datasets are organized in the `Data/2 norms` directory.
 ### Supporting materials
 The repository also includes the key materials required to interpret and reuse the released datasets.
 
-- **Target stimuli**: The complete list of 27,624 lexical items is available in `Data/0 wordlists/target_words.txt`.
-- **Prompt template**: The exact prompt template used for data generation is available in `Data/1 prompts/prompt_template.txt`.
-- **Variable descriptions**: Detailed definitions of all metrics and columns are provided in `Data/Variable Descriptions.xlsx`.
+- **Target stimuli**: The complete list of 27,624 lexical items is available in `LLM_Familiarity/Data/0 wordlists/target_words.txt`.
+- **Prompt template**: The exact prompt template used for data generation is available in `LLM_Familiarity/Data/1 prompts/prompt_template.txt`.
+- **Variable descriptions**: Detailed definitions of all metrics and columns are provided in `LLM_Familiarity/Data/Variable Descriptions.xlsx`.
 
 ## Reproducibility, model currency, and versioning
 
@@ -63,27 +70,27 @@ To support reproducibility and future updates, the repository documents the code
 
 ### Code pipeline
 
-- **Generation**: `Code/01_generate_ratings.ipynb`  
+- **Generation**: `LLM_Familiarity/Code/01_generate_ratings.ipynb`  
   Generates familiarity ratings through API-based inference. To evaluate newer model versions or alternative parameter settings, users can update the model name and the relevant API parameter dictionary in this notebook and rerun the generation workflow on the same target word list.
 
-- **Validation**: `Code/02_validation.ipynb`  
+- **Validation**: `LLM_Familiarity/Code/02_validation.ipynb`  
   Contains representative validation analyses used in the current study, including alignment with human familiarity norms and predictive modeling of lexical decision latencies.
 
 #### Refreshing and evaluating updated outputs
 
-To refresh the familiarity norms for a newer model version, users can update the model name and core parameter settings in `Code/01_generate_ratings.ipynb` and rerun the generation notebook on the same target word list. The resulting outputs can then be examined with `Code/02_data_analysis.ipynb`. 
+To refresh the familiarity norms for a newer model version, users can update the model name and core parameter settings in `Code/01_generate_ratings.ipynb` and rerun the generation notebook on the same target word list. The resulting outputs can then be examined with `Code/02_validation.ipynb`. 
 
 #### External datasets used in validation
 
 Some validation analyses in this repository require publicly available external datasets that are not redistributed here. Users who wish to rerun these analyses should download the relevant resources from their original sources and place them in `LLM_Familiarity/External_Data/`.
 
-- Human familiarity datasets:
-  - Single-character words: Liu et al., 2007.   
-  - Multi-character words:  Su et al., 2023. 
+- Human familiarity datasets
+  - Single-character words (Liu et al., 2007)
+  - Multi-character words (Su et al., 2023)
 - Lexical decision dataset
-  - MELD-SCH:  Tsang et al., 2018. 
+  - MELD-SCH (Tsang et al., 2018)
 - Optional benchmark dataset
-  - SUBTLEX-CH: Cai & Brysbaert, 2010. 
+  - SUBTLEX-CH (Cai & Brysbaert, 2010)
   
 ## Extending the approach to new variables, languages, and models
 
@@ -107,7 +114,6 @@ Based on our implementation experience, several prompt-design principles appear 
 - **Typographic emphasis**: When critical instructions are easy to overlook, visual emphasis (e.g., CAPITALIZATION or other typographic highlighting) may help make key constraints more salient.
 - **Language alignment**: Prompt language itself may influence model behavior. In practice, performance may vary depending on how the prompt language interacts with the model’s training data, so this factor should be evaluated empirically during calibration.
 
-
 ### Iterative calibration protocol
 Before full-scale data generation, we recommend establishing a stable prompt-and-parameter configuration through an iterative calibration procedure based on a representative subset of stimuli.
 
@@ -117,7 +123,8 @@ Before full-scale data generation, we recommend establishing a stable prompt-and
 - **Prompt and parameter refinement**: Revise the prompt wording, output instructions, and key settings in light of the initial outputs.
 - **Validation**: Evaluate the calibrated outputs against available human norms to assess alignment and overall validity. When relevant, also examine whether the resulting ratings show useful explanatory power for downstream behavioral measures, such as lexical processing performance.
 
-## Step-by-step tutorials
+## Tutorials
+We provide representative examples of how the released familiarity datasets can be used in practical research workflows, including fine-grained data retrieval for stimulus selection and downstream modeling of lexical decision performance.
 > Note: The tutorial notebooks in this repository are intended for local execution after the repository has been downloaded. 
 
 ### Tutorial 1. Fine-grained data retrieval for stimulus selection
@@ -125,9 +132,9 @@ Before full-scale data generation, we recommend establishing a stable prompt-and
 This tutorial demonstrates how to retrieve a targeted subset of lexical items from the familiarity datasets for stimulus design. The example below uses the GPT-4o word-level dataset to extract the top 10% most familiar two-character items.
 
 #### Working path
-- Tutorial notebook: `Tutorials/01_stimulus_selection.ipynb` (for local execution)
-- Input dataset: `Data/2 norms/norms_gpt4o_word_prompt.xlsx`
-- Output directory: `Tutorials/output/`
+- Tutorial notebook: `LLM_Familiarity/Tutorials/01_stimulus_selection.ipynb` (for local execution)
+- Input dataset: `LLM_Familiarity/Data/2 norms/norms_gpt4o_word_prompt.xlsx`
+- Output directory: `LLM_Familiarity/Tutorials/output/`
 
 #### Input data structure
 The input table should contain at least the following columns:
@@ -161,7 +168,6 @@ This tutorial demonstrates a representative downstream application of the releas
 - Familiarity dataset: `LLM_Familiarity/Data/2 norms/norms_gpt4o_word_prompt.xlsx`
 - External validation data: `LLM_Familiarity/External_Data/meld_sch.xlsx`
 - Output directory: `LLM_Familiarity/Tutorials/output/`
-
 
 #### Input data structure
 The familiarity dataset should contain at least:
