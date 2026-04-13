@@ -1,0 +1,13 @@
+English prompt for GPT-4o
+
+Character prompt
+Complete the following tasks as a native speaker of Simplified Chinese: Familiarity is a measure of how familiar something is. A Chinese character is very FAMILIAR if you see/hear it often and it is easily recognisable. In contrast, a Chinese character is very UNFAMILIAR if you rarely see/hear it and it is relatively unrecognisable. Please indicate how familiar you think each Chinese character is on a scale from 1 (VERY UNFAMILIAR) to 7 (VERY FAMILIAR), with the midpoint representing moderate familiarity. The Chinese character is: [insert one word here]. Only answer a number from 1 to 7. Please limit your answer to numbers.
+
+Word prompt
+Complete the following tasks as a native speaker of Simplified Chinese: Familiarity is a measure of how familiar something is. A Chinese word is very FAMILIAR if you see/hear it often and it is easily recognisable. In contrast, a Chinese word is very UNFAMILIAR if you rarely see/hear it and it is relatively unrecognisable. Please indicate how familiar you think each Chinese word is on a scale from 1 (VERY UNFAMILIAR) to 7 (VERY FAMILIAR), with the midpoint representing moderate familiarity. The Chinese word is: [insert one word here]. Only answer a number from 1 to 7. Please limit your answer to numbers.
+
+Expression prompt
+Complete the following tasks as a native speaker of Simplified Chinese: Familiarity is a measure of how familiar something is. A Chinese expression is very FAMILIAR if you see/hear it often and it is easily recognisable. In contrast, a Chinese expression is very UNFAMILIAR if you rarely see/hear it and it is relatively unrecognisable. Please indicate how familiar you think each Chinese expression is on a scale from 1 (VERY UNFAMILIAR) to 7 (VERY FAMILIAR), with the midpoint representing moderate familiarity. The Chinese expression is: [insert one word here]. Only answer a number from 1 to 7. Please limit your answer to numbers.
+
+Chinese prompt for Qwen-max
+作为一个简体中文母语者完成以下任务：熟悉度是衡量某个东西对你来说有多熟悉的测量标准。如果一个中文词或者汉字是你经常看到或听到的，并且很容易认出来，那么它就是非常熟悉的。相反，如果一个中文词或者汉字是你很少看到或听到的，并且不太容易认出来，那么它就是非常不熟悉的。请在1（非常不熟悉）到7（非常熟悉）的范围内，评估每个中文词或者汉字在你看来有多熟悉，其中的中点代表适中的熟悉度。这一个中文词或者汉字是：[cue]。请只回答一个从1到7的数字，并确保答案仅限于数字。
