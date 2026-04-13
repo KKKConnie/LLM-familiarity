@@ -66,16 +66,25 @@ To support reproducibility and future updates, the repository documents the code
 - **Generation**: `Code/01_generate_ratings.ipynb`  
   Generates familiarity ratings through API-based inference. To evaluate newer model versions or alternative parameter settings, users can update the model name and the relevant API parameter dictionary in this notebook and rerun the generation workflow on the same target word list.
 
-- **Analysis**: `Code/02_data_analysis.ipynb`  
-  Contains representative validation and downstream analysis examples used in the current study, including alignment with human familiarity norms and predictive modeling of lexical decision latencies.
+- **Validation**: `Code/02_validation.ipynb`  
+  Contains representative validation analyses used in the current study, including alignment with human familiarity norms and predictive modeling of lexical decision latencies.
 
 #### Refreshing and evaluating updated outputs
 
 To refresh the familiarity norms for a newer model version, users can update the model name and core parameter settings in `Code/01_generate_ratings.ipynb` and rerun the generation notebook on the same target word list. The resulting outputs can then be examined with `Code/02_data_analysis.ipynb`. 
 
-#### External resources for validation
-Some datasets used in the validation analyses are publicly available from their original sources but are not redistributed in this repository. Users who wish to rerun those analyses should obtain the relevant datasets separately. Detailed guidance on representative use cases is provided in the tutorials.
+#### External datasets used in validation
 
+Some validation analyses in this repository require publicly available external datasets that are not redistributed here. Users who wish to rerun these analyses should download the relevant resources from their original sources and place them in `LLM_Familiarity/External_Data/`.
+
+- Human familiarity datasets:
+  - Single-character words: Liu et al., 2007.   
+  - Multi-character words:  Su et al., 2023. 
+- Lexical decision dataset
+  - MELD-SCH:  Tsang et al., 2018. 
+- Optional benchmark dataset
+  - SUBTLEX-CH: Cai & Brysbaert, 2010. 
+  
 ## Extending the approach to new variables, languages, and models
 
 To facilitate extension beyond the current release, the repository also provides general guidance for adapting the framework to new psycholinguistic variables, languages, and LLMs.
@@ -142,9 +151,51 @@ The tutorial exports a filtered item list, for example:
 #### Notes
 - The same workflow can be applied to other datasets by changing the input file and the familiarity column of interest.
 - For the Qwen-max dataset, replace `GPT_FAM_probs` with `qwen_FAM_mean_30`.
+
 ### Tutorial 2. Using LLM-derived familiarity to model lexical decision latencies
 
+This tutorial demonstrates a representative downstream application of the released familiarity estimates by modeling lexical decision reaction times for two-character words.
+
+#### Working path
+- Tutorial notebook: `LLM_Familiarity/Tutorials/02_ldt_modeling.ipynb` (for local execution)
+- Familiarity dataset: `LLM_Familiarity/Data/2 norms/norms_gpt4o_word_prompt.xlsx`
+- External validation data: `LLM_Familiarity/External_Data/meld_sch.xlsx`
+- Output directory: `LLM_Familiarity/Tutorials/output/`
+
+
+#### Input data structure
+The familiarity dataset should contain at least:
+- `WORD`
+- `Length`
+- `GPT_FAM_probs`
+
+The lexical decision dataset should contain at least:
+- `WORD`
+- `zRT`
+- `ERR` or `ACC`
+
+Detailed information on the required external datasets is provided in the section “External datasets used in validation” above.
+
+#### Procedure
+1. Load the released familiarity dataset and the lexical decision dataset.
+2. Restrict the familiarity data to two-character words.
+3. Standardize the lexical decision variables and apply the accuracy filter.
+4. Merge the two datasets by lexical item.
+5. Fit a single-predictor regression model using LLM-derived familiarity to predict lexical decision reaction times.
+6. Export the merged table and model summary.
+
+#### Output
+The tutorial exports a merged analysis table and a regression summary to `LLM_Familiarity/Tutorials/output/`.
+
 ## Citation
+
+### How to cite this resource
+
+### External datasets referenced in validation
+- Liu, Y., Shu, H., & Li, P. (2007). *Word naming and psycholinguistic norms: Chinese*. *Behavior Research Methods, 39*(2), 192–198. https://doi.org/10.3758/BF03193147
+- Su, Y., Li, Y., & Li, H. (2023). *Familiarity ratings for 24,325 simplified Chinese words*. *Behavior Research Methods, 55*(3), 1496–1509. https://doi.org/10.3758/s13428-022-01878-5
+- Tsang, Y.-K., Huang, J., Lui, M., Xue, M., Chan, Y.-W. F., Wang, S., & Chen, H.-C. (2018). *MELD-SCH: A megastudy of lexical decision in simplified Chinese*. *Behavior Research Methods, 50*(5), 1763–1777. https://doi.org/10.3758/s13428-017-0944-0
+- Cai, Q., & Brysbaert, M. (2010). *SUBTLEX-CH: Chinese word and character frequencies based on film subtitles*. *PLoS ONE, 5*(6), e10729. https://doi.org/10.1371/journal.pone.0010729
 
 ## Contact
 Please address questions and suggestions to:
