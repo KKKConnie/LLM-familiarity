@@ -15,7 +15,7 @@ This repository provides a large-scale familiarity database for 27,624 Simplifie
 - [Extending the approach to new variables, languages, and models](#extending-the-approach-to-new-variables-languages-and-models)
   - [Suitability criteria](#suitability-criteria)
   - [Prompt engineering recommendations](#prompt-engineering-recommendations)
-  - [Iterative calibration protocol](#iterative-calibration-protocol)
+  - [Pre-generation calibration protocol](#pre-generation-calibration-protocol)
 - [Tutorials](#tutorials)
   - [Tutorial 1. Fine-grained data retrieval for stimulus selection](#tutorial-1-fine-grained-data-retrieval-for-stimulus-selection)
   - [Tutorial 2. Using LLM-derived familiarity to model lexical decision latencies](#tutorial-2-using-llm-derived-familiarity-to-model-lexical-decision-latencies)
@@ -113,17 +113,17 @@ Based on our implementation experience, several prompt-design principles appear 
 - **Typographic emphasis**: When critical instructions are easy to overlook, visual emphasis (e.g., CAPITALIZATION or other typographic highlighting) may help make key constraints more salient.
 - **Language alignment**: Prompt language itself may influence model behavior. In practice, performance may vary depending on how the prompt language interacts with the model’s training data, so this factor should be evaluated empirically during calibration.
 
-### Iterative calibration protocol
-Before full-scale data generation, we recommend establishing a stable prompt-and-parameter configuration through an iterative calibration procedure based on a representative subset of stimuli.
+### Pre-generation calibration protocol
+Before full-scale data generation, we recommend establishing a stable prompt-and-parameter configuration through a calibration procedure based on a representative subset of stimuli.
 
 - **Subset selection**: Begin with a representative sample of the target vocabulary rather than the full dataset. The subset should cover the major item types relevant to the intended application. 
 - **Small-scale generation**: Run initial rating generation on this subset using candidate prompts and parameter settings.
 - **Output review and cleaning**: Inspect the outputs carefully, even when strict format constraints are used, and identify potential non-numeric responses, malformed outputs, or other irregularities.
 - **Prompt and parameter refinement**: Revise the prompt wording, output instructions, and key settings in light of the initial outputs.
-- **Validation**: Evaluate the calibrated outputs against available human norms to assess alignment and overall validity. When relevant, also examine whether the resulting ratings show useful explanatory power for downstream behavioral measures, such as lexical processing performance.
-
+- **Validation**: Evaluate the calibrated outputs against available human norms to assess alignment and overall validity. When relevant, also examine whether the resulting ratings show useful explanatory power for behavioral measures, such as lexical processing performance.
+- 
 ## Tutorials
-We provide representative examples of how the released familiarity datasets can be used in practical research workflows, including fine-grained data retrieval for stimulus selection and downstream modeling of lexical decision performance.
+We provide representative examples of how the released familiarity datasets can be used in practical research workflows, including fine-grained data retrieval for stimulus selection and modeling of lexical decision performance.
 > Note: The tutorial notebooks in this repository are intended for local execution after the repository has been downloaded. 
 
 ### Tutorial 1. Fine-grained data retrieval for stimulus selection
@@ -160,7 +160,7 @@ The tutorial exports a filtered item list, for example:
 
 ### Tutorial 2. Using LLM-derived familiarity to model lexical decision latencies
 
-This tutorial demonstrates a representative downstream application of the released familiarity estimates by modeling lexical decision reaction times for two-character words.
+This tutorial demonstrates a representative application of the released familiarity estimates by modeling lexical decision reaction times for two-character words.
 
 #### Working path
 - Tutorial notebook: `LLM_Familiarity/Tutorials/02_ldt_modeling.ipynb` (for local execution)
@@ -195,7 +195,7 @@ The tutorial exports a merged analysis table and a regression summary to `LLM_Fa
 ## Citation
 
 ### How to cite this resource
-
+> *Citation information will be updated upon publication.*
 ### External datasets referenced in validation
 - Liu, Y., Shu, H., & Li, P. (2007). *Word naming and psycholinguistic norms: Chinese*. *Behavior Research Methods, 39*(2), 192–198. https://doi.org/10.3758/BF03193147
 - Su, Y., Li, Y., & Li, H. (2023). *Familiarity ratings for 24,325 simplified Chinese words*. *Behavior Research Methods, 55*(3), 1496–1509. https://doi.org/10.3758/s13428-022-01878-5
