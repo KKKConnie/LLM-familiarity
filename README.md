@@ -121,7 +121,7 @@ Before full-scale data generation, we recommend establishing a stable prompt-and
 - **Output review and cleaning**: Inspect the outputs carefully, even when strict format constraints are used, and identify potential non-numeric responses, malformed outputs, or other irregularities.
 - **Prompt and parameter refinement**: Revise the prompt wording, output instructions, and key settings in light of the initial outputs.
 - **Validation**: Evaluate the calibrated outputs against available human norms to assess alignment and overall validity. When relevant, also examine whether the resulting ratings show useful explanatory power for behavioral measures, such as lexical processing performance.
-- 
+  
 ## Tutorials
 We provide representative examples of how the released familiarity datasets can be used in practical research workflows, including fine-grained data retrieval for stimulus selection and modeling of lexical decision performance.
 > Note: The tutorial notebooks in this repository are intended for local execution after the repository has been downloaded. 
