@@ -204,5 +204,6 @@ The tutorial exports a merged analysis table and a regression summary to `LLM_Fa
 
 ## Contact
 Please address questions and suggestions to:
-* DING Ziyi | 丁子益 | ziyi.ecnu@gmail.com | ZiyiDing7@github
 * QIN Kangning | 秦康宁 | conniekk729@gmail.com | KKKConnie@github
+* DING Ziyi | 丁子益 | ziyi.ecnu@gmail.com | ZiyiDing7@github
+
